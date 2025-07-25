@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Spirit Veggie Finder</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Poppins&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chamealone Spirit Veggie Test</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Spirit Veggie apa yang kamu butuhkan hari ini?</h1>
-    <div id="quiz"></div>
-    <div id="result" class="result" style="display:none"></div>
-  </div>
-  <script src="script.js"></script>
+  <main>
+    <!-- Landing Page -->
+    <section id="home" class="section">
+      <img src="images/chamealone-title.png" alt="Chamealone Spirit Test" class="title-image" />
+      <div class="content">
+        <h1>Welcome to the Spirit Veggie Test</h1>
+        <p>
+          In a world between worlds, you find yourself falling into a dim, endless corridor...
+          Guided only by the voice of Chame — a confused but curious chameleon — you begin
+          a journey through questions, memories, and shadows of the self. At the end, one
+          Veggie Spirit will rise to meet you, revealing your deepest emotional wound, and
+          the healing path that fits your soul.
+        </p>
+        <img src="images/veggie-spirits-overview.png" alt="Veggie Spirit Overview" class="section-image" />
+        <button id="startButton">Start the Journey</button>
+      </div>
+    </section>
+
+    <!-- Quiz and Result sections inserted dynamically by JS -->
+    <section id="quiz" class="section hidden"></section>
+    <section id="result" class="section hidden"></section>
+  </main>
 </body>
 </html>
