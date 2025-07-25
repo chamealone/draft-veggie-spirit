@@ -228,3 +228,10 @@ function processResultAndRedirect(selectedOptions) {
 
 // 6. Contoh pemanggilan (ganti ini dengan event ketika user selesai quiz)
 // processResultAndRedirect(selectedOptions);
+
+<body>
+  <!-- Semua konten -->
+
+  <script src="script.js"></script>
+</body>
+
