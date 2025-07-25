@@ -98,107 +98,95 @@ const questions = [
       { text: "Coba hubungi Chame, tapi nggak ada jawaban.", spirits: ["Alliowl", "Gingeer"] },
       { text: "Nangis sedikit, terus jalan lagi.", spirits: ["Banion", "Mubii"] }
     ]
-  }
-   {
+  },
+  {
     text: "11. Chame bilang, “Kita hampir sampai.” Kamu tiba-tiba merasa...",
-    answers: [
-      { text: "A. Takut keluar, malah ingin tetap di sini.", spirits: ["Bitty", "Potatoad"] },
-      { text: "B. Gugup tapi penasaran.", spirits: ["Mubii", "Alliowl"] },
-      { text: "C. Ingin balik dan perbaiki banyak hal.", spirits: ["Onyun", "Gingeer"] },
-      { text: "D. Ingin mempercepat langkah.", spirits: ["Banion", "Gingeer"] },
-      { text: "E. Ingin pelan-pelan agar bisa refleksi lebih dalam.", spirits: ["Kroot", "Alliowl"] }
+    options: [
+      { text: "Takut keluar, malah ingin tetap di sini.", spirits: ["Bitty", "Potatoad"] },
+      { text: "Gugup tapi penasaran.", spirits: ["Mubii", "Alliowl"] },
+      { text: "Ingin balik dan perbaiki banyak hal.", spirits: ["Onyun", "Gingeer"] },
+      { text: "Ingin mempercepat langkah.", spirits: ["Banion", "Gingeer"] },
+      { text: "Ingin pelan-pelan agar bisa refleksi lebih dalam.", spirits: ["Kroot", "Alliowl"] }
     ]
   },
   {
     text: "12. Lorong terbuka ke ruang putih kosong. “Kamu bisa isi ruang ini dengan apapun,” kata Chame. Kamu memilih...",
-    answers: [
-      { text: "A. Kursi nyaman dan selimut.", spirits: ["Potatoad", "Mubii"] },
-      { text: "B. Rak buku dan jendela besar.", spirits: ["Gingeer", "Alliowl"] },
-      { text: "C. Lukisan dan warna-warna aneh.", spirits: ["Bitty", "Banion"] },
-      { text: "D. Cermin-cermin dan lampu kecil.", spirits: ["Banion", "Alliowl"] },
-      { text: "E. Tempat buat rebahan dan nonton.", spirits: ["Potatoad", "Bitty"] }
+    options: [
+      { text: "Kursi nyaman dan selimut.", spirits: ["Potatoad", "Mubii"] },
+      { text: "Rak buku dan jendela besar.", spirits: ["Gingeer", "Alliowl"] },
+      { text: "Lukisan dan warna-warna aneh.", spirits: ["Bitty", "Banion"] },
+      { text: "Cermin-cermin dan lampu kecil.", spirits: ["Banion", "Alliowl"] },
+      { text: "Tempat buat rebahan dan nonton.", spirits: ["Potatoad", "Bitty"] }
     ]
   },
   {
     text: "13. Di ujung ruang, ada benda kecil yang bersinar. Kamu mendekat dan ternyata...",
-    answers: [
-      { text: "A. Benda kenangan yang kamu lupakan.", spirits: ["Gingeer", "Mubii"] },
-      { text: "B. Sepotong surat dengan tulisan familiar.", spirits: ["Alliowl", "Kroot"] },
-      { text: "C. Foto seseorang yang pernah sangat berarti.", spirits: ["Bitty", "Banion"] },
-      { text: "D. Kaca kecil dengan ukiran aneh.", spirits: ["Onyun", "Alliowl"] },
-      { text: "E. Kompas usang.", spirits: ["Kroot", "Gingeer"] }
+    options: [
+      { text: "Benda kenangan yang kamu lupakan.", spirits: ["Gingeer", "Mubii"] },
+      { text: "Sepotong surat dengan tulisan familiar.", spirits: ["Alliowl", "Kroot"] },
+      { text: "Foto seseorang yang pernah sangat berarti.", spirits: ["Bitty", "Banion"] },
+      { text: "Kaca kecil dengan ukiran aneh.", spirits: ["Onyun", "Alliowl"] },
+      { text: "Kompas usang.", spirits: ["Kroot", "Gingeer"] }
     ]
   },
   {
     text: "14. Chame bertanya, “Kamu siap pulang?” Kamu menjawab...",
-    answers: [
-      { text: "A. “Belum.”", spirits: ["Bitty", "Mubii"] },
-      { text: "B. “Aku nggak tahu.”", spirits: ["Alliowl", "Potatoad"] },
-      { text: "C. “Kalo aku pulang, aku berubah nggak?”", spirits: ["Banion", "Kroot"] },
-      { text: "D. “Ya. Aku bawa semuanya.”", spirits: ["Gingeer", "Onyun"] },
-      { text: "E. “Tapi kamu ikut juga ya?”", spirits: ["Mubii", "Bitty"] }
+    options: [
+      { text: "“Belum.”", spirits: ["Bitty", "Mubii"] },
+      { text: "“Aku nggak tahu.”", spirits: ["Alliowl", "Potatoad"] },
+      { text: "“Kalo aku pulang, aku berubah nggak?”", spirits: ["Banion", "Kroot"] },
+      { text: "“Ya. Aku bawa semuanya.”", spirits: ["Gingeer", "Onyun"] },
+      { text: "“Tapi kamu ikut juga ya?”", spirits: ["Mubii", "Bitty"] }
     ]
   },
   {
     text: "15. Saat kamu berjalan keluar, Chame memberi satu pesan untuk dibawa. Pesannya tentang...",
-    answers: [
-      { text: "A. Keberanian melihat isi dirimu.", spirits: ["Alliowl", "Banion"] },
-      { text: "B. Izin untuk istirahat dan diam.", spirits: ["Potatoad", "Kroot"] },
-      { text: "C. Hakmu untuk merasa dan menangis.", spirits: ["Mubii", "Bitty"] },
-      { text: "D. Menurunkan ekspektasi dan belajar pelan.", spirits: ["Gingeer", "Onyun"] },
-      { text: "E. Tentang menerima arah yang berubah.", spirits: ["Bitty", "Kroot"] }
+    options: [
+      { text: "Keberanian melihat isi dirimu.", spirits: ["Alliowl", "Banion"] },
+      { text: "Izin untuk istirahat dan diam.", spirits: ["Potatoad", "Kroot"] },
+      { text: "Hakmu untuk merasa dan menangis.", spirits: ["Mubii", "Bitty"] },
+      { text: "Menurunkan ekspektasi dan belajar pelan.", spirits: ["Gingeer", "Onyun"] },
+      { text: "Tentang menerima arah yang berubah.", spirits: ["Bitty", "Kroot"] }
     ]
   },
   {
     text: "16. Cahaya menyilaukan menyambutmu di luar lorong. Perasaan terakhir sebelum keluar...",
-    answers: [
-      { text: "A. Harapan.", spirits: ["Kroot", "Mubii"] },
-      { text: "B. Ragu tapi ingin mencoba.", spirits: ["Bitty", "Onyun"] },
-      { text: "C. Duka yang indah.", spirits: ["Banion", "Alliowl"] },
-      { text: "D. Lega.", spirits: ["Potatoad", "Gingeer"] },
-      { text: "E. Rindu versi dirimu yang lama.", spirits: ["Alliowl", "Bitty"] }
+    options: [
+      { text: "Harapan.", spirits: ["Kroot", "Mubii"] },
+      { text: "Ragu tapi ingin mencoba.", spirits: ["Bitty", "Onyun"] },
+      { text: "Duka yang indah.", spirits: ["Banion", "Alliowl"] },
+      { text: "Lega.", spirits: ["Potatoad", "Gingeer"] },
+      { text: "Rindu versi dirimu yang lama.", spirits: ["Alliowl", "Bitty"] }
     ]
   }
 ];
 
-// 1. Inisialisasi skor spirit
-const spiritScores = {
-  Kroot: 0,
-  Banion: 0,
-  Potatoad: 0,
-  Mubii: 0,
-  Onyun: 0,
-  Bitty: 0,
-  Gingeer: 0,
-  Alliowl: 0
-};
+function getEmptySpiritScores() {
+  return {
+    Kroot: 0,
+    Banion: 0,
+    Potatoad: 0,
+    Mubii: 0,
+    Onyun: 0,
+    Bitty: 0,
+    Gingeer: 0,
+    Alliowl: 0
+  };
+}
 
-// 2. Contoh: selectedOptions = [0, 2, 1, ...]
-//    Array dengan indeks pilihan user untuk tiap pertanyaan, panjangnya 16
-//    Pastikan ini terisi sebelum pemrosesan result
-//    Misal, kamu sudah punya: let selectedOptions = [0, 1, 2, 3, 4, 0, ...];
-//
-//    Kalau belum, pilihannya bisa dari radio button, select, dsb.
-
-// 3. Fungsi untuk menghitung spiritScores
 function calculateSpiritScores(selectedOptions) {
-  // Perhatikan: Untuk pertanyaan 1-10 pakai .options, 11-16 pakai .answers
+  let spiritScores = getEmptySpiritScores();
   for (let i = 0; i < selectedOptions.length; i++) {
-    let answerObj;
-    if (i < 10) {
-      answerObj = questions[i].options[selectedOptions[i]];
-    } else {
-      answerObj = questions[i].answers[selectedOptions[i]];
-    }
+    let answerObj = questions[i].options[selectedOptions[i]];
     if (answerObj && answerObj.spirits) {
       answerObj.spirits.forEach(spirit => {
         spiritScores[spirit] = (spiritScores[spirit] || 0) + 1;
       });
     }
   }
+  return spiritScores;
 }
 
-// 4. Fungsi untuk mencari spirit terbanyak
 function getTopSpirit(spiritScores) {
   let topSpirit = null;
   let topScore = -1;
@@ -211,20 +199,9 @@ function getTopSpirit(spiritScores) {
   return topSpirit;
 }
 
-// 5. Fungsi utama (bisa dipanggil setelah user selesai menjawab semua pertanyaan)
 function processResultAndRedirect(selectedOptions) {
-  // Hitung skor spirit
-  calculateSpiritScores(selectedOptions);
-
-  // Cari spirit dengan skor tertinggi
+  const spiritScores = calculateSpiritScores(selectedOptions);
   const resultSpirit = getTopSpirit(spiritScores);
-
-  // Simpan hasil ke localStorage
   localStorage.setItem('spiritResult', resultSpirit);
-
-  // Redirect ke result.html
   window.location.href = 'result.html';
 }
-
-// 6. Contoh pemanggilan (ganti ini dengan event ketika user selesai quiz)
-// processResultAndRedirect(selectedOptions);
