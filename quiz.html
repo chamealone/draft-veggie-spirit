@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Veggie Spirit</title>
+</head>
+<body>
+  <h1>Quiz Veggie Spirit</h1>
+  <form id="quizForm"></form>
+  <button id="submitBtn">Lihat Hasil</button>
 
+  <script src="script.js"></script>
+  <script>
+    const quizForm = document.getElementById('quizForm');
+    questions.forEach((q, idx) => {
+      const qDiv = document.createElement('div');
+      qDiv.className = 'question-box';
+
+      const qText = document.createElement('p');
+      qText.textContent = q.text;
+      qDiv.appendChild(qText);
+
+      q.options.forEach((opt, optIdx) => {
+        const label = document.createElement('label');
+        label.className = 'option';
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'question' + idx;
+        radio.value = optIdx;
+        label.appendChild(radio);
+
+        label.appendChild(document.createTextNode(opt.text));
+        qDiv.appendChild(label);
+      });
+
+      quizForm.appendChild(qDiv);
+    });
+
+    document.getElementById('submitBtn').onclick = function() {
+      let selectedOptions = [];
+      for (let i = 0; i < questions.length; i++) {
+        const val = document.querySelector('input[name="question'+i+'"]:checked');
+        if (!val) {
+          alert('Mohon jawab semua pertanyaan.');
+          return;
+        }
+        selectedOptions.push(Number(val.value));
+      }
+      processResultAndRedirect(selectedOptions);
+    };
+  </script>
+</body>
+</html>
