@@ -32,6 +32,51 @@
       <button id="retry-btn" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">Coba Lagi</button>
     </div>
   </div>
+<script>
+  // Data spirit sama seperti sebelumnya
+  const data = {
+    Kroot: { /* ... */ },
+    Banion: { /* ... */ },
+    Potatoad: { /* ... */ },
+    Mubii: { /* ... */ },
+    Onyun: { /* ... */ },
+    Bitty: { /* ... */ },
+    Gingeer: { /* ... */ },
+    Alliowl: { /* ... */ }
+  };
+
+  function getParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  // Ambil spirit dari parameter URL
+  const spiritParam = getParam('spirit');
+  // Cek apakah spirit valid
+  const spirit = data[spiritParam] ? spiritParam : null;
+
+  if (spirit) {
+    const info = data[spirit];
+    document.getElementById('spirit-name').textContent = spirit;
+    document.getElementById('spirit-desc').textContent = info.desc;
+    document.getElementById('inner-wound').textContent = info.inner;
+    document.getElementById('healing-style').textContent = info.healing;
+    document.getElementById('friend-spirit').textContent = `Kamu cocok dengan spirit ${info.friend}!`;
+    document.getElementById('friend-desc').textContent = info.friendDesc;
+  } else {
+    // Jika spirit tidak valid, tampilkan pesan error
+    document.getElementById('spirit-name').textContent = "Spirit tidak ditemukan";
+    document.getElementById('spirit-desc').textContent = "Spirit yang kamu pilih tidak tersedia. Silakan ulang tes.";
+    document.getElementById('inner-wound').textContent = "-";
+    document.getElementById('healing-style').textContent = "-";
+    document.getElementById('friend-spirit').textContent = "-";
+    document.getElementById('friend-desc').textContent = "-";
+  }
+
+  document.getElementById('retry-btn').addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+</script>
 
   <script>
     const data = {
