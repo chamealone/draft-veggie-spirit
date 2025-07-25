@@ -160,3 +160,71 @@ const questions = [
     ]
   }
 ];
+
+// 1. Inisialisasi skor spirit
+const spiritScores = {
+  Kroot: 0,
+  Banion: 0,
+  Potatoad: 0,
+  Mubii: 0,
+  Onyun: 0,
+  Bitty: 0,
+  Gingeer: 0,
+  Alliowl: 0
+};
+
+// 2. Contoh: selectedOptions = [0, 2, 1, ...]
+//    Array dengan indeks pilihan user untuk tiap pertanyaan, panjangnya 16
+//    Pastikan ini terisi sebelum pemrosesan result
+//    Misal, kamu sudah punya: let selectedOptions = [0, 1, 2, 3, 4, 0, ...];
+//
+//    Kalau belum, pilihannya bisa dari radio button, select, dsb.
+
+// 3. Fungsi untuk menghitung spiritScores
+function calculateSpiritScores(selectedOptions) {
+  // Perhatikan: Untuk pertanyaan 1-10 pakai .options, 11-16 pakai .answers
+  for (let i = 0; i < selectedOptions.length; i++) {
+    let answerObj;
+    if (i < 10) {
+      answerObj = questions[i].options[selectedOptions[i]];
+    } else {
+      answerObj = questions[i].answers[selectedOptions[i]];
+    }
+    if (answerObj && answerObj.spirits) {
+      answerObj.spirits.forEach(spirit => {
+        spiritScores[spirit] = (spiritScores[spirit] || 0) + 1;
+      });
+    }
+  }
+}
+
+// 4. Fungsi untuk mencari spirit terbanyak
+function getTopSpirit(spiritScores) {
+  let topSpirit = null;
+  let topScore = -1;
+  for (const spirit in spiritScores) {
+    if (spiritScores[spirit] > topScore) {
+      topScore = spiritScores[spirit];
+      topSpirit = spirit;
+    }
+  }
+  return topSpirit;
+}
+
+// 5. Fungsi utama (bisa dipanggil setelah user selesai menjawab semua pertanyaan)
+function processResultAndRedirect(selectedOptions) {
+  // Hitung skor spirit
+  calculateSpiritScores(selectedOptions);
+
+  // Cari spirit dengan skor tertinggi
+  const resultSpirit = getTopSpirit(spiritScores);
+
+  // Simpan hasil ke localStorage
+  localStorage.setItem('spiritResult', resultSpirit);
+
+  // Redirect ke result.html
+  window.location.href = 'result.html';
+}
+
+// 6. Contoh pemanggilan (ganti ini dengan event ketika user selesai quiz)
+// processResultAndRedirect(selectedOptions);
