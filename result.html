@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spirit Personality Test Result</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+  <div id="app" class="max-w-xl w-full bg-white rounded-2xl shadow p-6 space-y-6">
+    <h1 class="text-3xl font-bold text-center">Hasil Tes Kepribadian</h1>
+    <div id="result-card" class="border rounded-xl p-4 space-y-4">
+      <h2 id="spirit-name" class="text-2xl font-semibold"></h2>
+      <p id="spirit-desc" class="text-gray-700"></p>
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <div>
+          <h3 class="font-medium">Inner Wound</h3>
+          <p id="inner-wound" class="text-gray-600"></p>
+        </div>
+        <div>
+          <h3 class="font-medium">Healing Style</h3>
+          <p id="healing-style" class="text-gray-600"></p>
+        </div>
+      </div>
+      <div class="mt-4 space-y-2">
+        <h3 class="font-medium">Teman Spirit Terbaik</h3>
+        <p id="friend-spirit" class="text-gray-600"></p>
+        <p id="friend-desc" class="text-gray-600 italic"></p>
+      </div>
+    </div>
+    <div class="text-center">
+      <button id="retry-btn" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">Coba Lagi</button>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      Kroot: {
+        desc: `"Kamu ini tipikal yang selalu menenangkan orang lain, tapi di dalam hati sering berpikir, 'Apa aku sudah cukup?' Bayangkan kamu duduk di taman, sambil menatap kaki wortel dalam pot: kalem, sabar… tapi kadang merasa 'kok kecil?' Healing-nya: jadi pengingat untuk dirimu sendiri—setiap kali ragu, tarik napas, ingat nilai yang sudah kamu tanam sejauh ini."`,
+        inner: "Merasa tidak cukup",
+        healing: "Grounded, pengingat nilai diri",
+        friend: "Gingeer",
+        friendDesc: "Gingeer akan membantumu melembutkan ekspektasi diri, sementara kamu mengingatkan Gingeer bahwa nilai diri tidak hanya soal pencapaian."
+      },
+      Banion: {
+        desc: `"Emosimu itu intens, kadang meledak tiba-tiba—tapi pernah nggak kamu merasa kalau orang lain takut sama luapan itu? Ibarat kelelawar yang terbang di malam gelap, kamu sebenarnya ingin dipahami, bukan dihakimi. Proses sembuhnya: berani tunjukkan emosimu, dan rasakan lega saat kamu divalidasi."`,
+        inner: "Takut ditinggalkan, emosi tertahan",
+        healing: "Validasi emosi gelap",
+        friend: "Potatoad",
+        friendDesc: "Potatoad akan mengajarkanmu bahwa istirahat itu kekuatan, sementara kamu mengajarkan Potatoad bahwa mengekspresikan emosi gelap itu wajar dan membebaskan."
+      },
+      Potatoad: {
+        desc: `"Pernah bangun, lalu berpikir, 'Aku capek banget…'? Itu Potatoad banget. Kamu kayak kodok malas yang nyaman di pancuran air hangat—tapi sesungguhnya butuh izin resmi untuk istirahat. Hadiahnya: setelah rehat, kamu kembali bertenaga, percaya deh."`,
+        inner: "Burnout, kelelahan terus-menerus",
+        healing: "Istirahat, pelarian sehat",
+        friend: "Banion",
+        friendDesc: "Banion akan membantumu mengekspresikan dan memvalidasi emosi gelap, sementara kamu menunjukkan ke Banion pentingnya jeda dan self-care."
+      },
+      Mubii: {
+        desc: `"Kamu suka banget bikin orang lain senang, sampai lupa siapa kamu sebenarnya. Bayangkan ubi ungu yang lembut—manisnya terasa, tapi di dalamnya perlu ruang untuk 'nggak oke'. Healing-nya: belajar bilang 'nggak', dan rasakan kebebasan baru."`,
+        inner: "Boundaries lemah, pleasing",
+        healing: "Izin untuk bilang 'tidak'",
+        friend: "Onyun",
+        friendDesc: "Onyun akan membantumu membangun struktur dan batas, sementara kamu mengajarkan Onyun fleksibilitas dan empati."
+      },
+      Onyun: {
+        desc: `"Sempurna itu kata yang menakutkan buatmu. Kamu panikan internal: 'Apa aku sudah benar?' Seperti daun bawang yang harus tertata rapi, kamu butuh struktur. Kunci sembuhnya: terima ketidaksempurnaan, katakan 'aku masih belajar', dan lihat betapa leganya."`,
+        inner: "Takut salah, butuh kontrol",
+        healing: "Struktur & pengakuan rasa takut",
+        friend: "Mubii",
+        friendDesc: "Mubii akan mengajarkanmu cara rileks dan menolak secara tulus, sementara kamu memberi Mubii kerangka untuk lebih aman mengungkapkan perasaan."
+      },
+      Bitty: {
+        desc: `"Kamu mudah terbang ke awan—penuh ide, tapi entah ke mana arah. Pernah nonton langit lalu bertanya, 'Apa tujuan hidup aku?' Healing-nya: hargai momen kecil—misal ngopi sambil nulis puisi—dan temukan makna di sana."`,
+        inner: "Kehilangan arah, rasa kosong",
+        healing: "Refleksi eksistensial & spontanitas",
+        friend: "Alliowl",
+        friendDesc: "Alliowl akan membantu menggali makna lebih dalam, sementara kamu mengajak Alliowl keluar dari zona aman dengan kreativitasmu."
+      },
+      Gingeer: {
+        desc: `"Kamu perfeksionis yang kadang kikuk—seperti rusa yang hati-hati melangkah di hutan. 'Bagaimana kalau aku gagal?' sering jadi bisikan. Obatnya: pelan-pelan longgarkan ekspektasi, dan rayakan langkah kecilmu."`,
+        inner: "Takut gagal, imposter syndrome",
+        healing: "Melembutkan ekspektasi diri",
+        friend: "Kroot",
+        friendDesc: "Kroot akan mengingatkanmu nilai ketenangan dan kesabaran, sementara kamu membantu Kroot melonggarkan standar diri agar lebih berani bereksperimen."
+      },
+      Alliowl: {
+        desc: `"Kamu pendiam dan penuh misteri, seperti burung hantu yang mengamati malam. Trauma lama bikin susah percaya orang. Healing-nya: pelan tapi pasti—beri dirimu waktu, dengarkan hatimu, dan izinkan cahaya hangat masuk."`,
+        inner: "Trauma lama, distrust",
+        healing: "Observasi & penyembuhan mendalam",
+        friend: "Bitty",
+        friendDesc: "Bitty akan mengundangmu bermain dengan kata dan puisi, sementara kamu mengajarkan Bitty seni mendengar dan merenung dalam diam."
+      }
+    };
+
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    const spirit = getParam('spirit') || 'Kroot';
+    const info = data[spirit] || data['Kroot'];
+
+    document.getElementById('spirit-name').textContent = spirit;
+    document.getElementById('spirit-desc').textContent = info.desc;
+    document.getElementById('inner-wound').textContent = info.inner;
+    document.getElementById('healing-style').textContent = info.healing;
+    document.getElementById('friend-spirit').textContent = `Kamu cocok dengan spirit **${info.friend}**!`;
+    document.getElementById('friend-desc').textContent = info.friendDesc;
+
+    document.getElementById('retry-btn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
