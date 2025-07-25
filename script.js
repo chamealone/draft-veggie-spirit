@@ -1,182 +1,162 @@
-const pertanyaan = [
-  "Saat kamu overwhelmed, kamu biasanya...",
-  "Kamu pengen orang lain...",
-  "Emosi mana yang paling susah kamu kontrol?",
-  "Saat semuanya terasa berat, kamu butuh...",
-  "Kamu lebih suka...",
-  "Orang lain mengira kamu itu...",
-  "Saat temanmu lagi down, kamu akan...",
-  "Kamu pengen bisa lebih...",
-  "Saat gak ada yang paham kamu, kamu...",
-  "Kamu nyaman saat...",
-  "Kamu gampang...",
-  "Kalau kamu jadi spirit veggie, kamu ingin...",
-  "Kamu ngerasa paling kuat saat...",
-  "Kamu paling sebel sama orang yang...",
-  "Saat kamu gagal, kamu biasanya...",
-  "Kamu butuh teman yang bisa..."
-];
-
-const opsi = [
-  ["Menarik diri", "Ngegas", "Nangis", "Ngelawak"],
-  ["Dengerin kamu", "Gak ganggu kamu", "Ikut semangat kamu", "Nurut aja"],
-  ["Marah", "Sedih", "Takut", "Apatis"],
-  ["Dipeluk", "Dikuatkan", "Dijaga", "Didengerin"],
-  ["Waktu sendiri", "Ngobrol panjang", "Cuddle time", "Lari ke hutan"],
-  ["Keras kepala", "Cuek", "Gampang baper", "Kalem"],
-  ["Bercandain", "Dengerin", "Ngajakin main", "Nasehatin"],
-  ["Disiplin", "Optimis", "Nyantai", "Terbuka"],
-  ["Ngelucu", "Nangis diem-diem", "Pergi jauh", "Tulis diary"],
-  ["Gak dituntut", "Dihargai usahanya", "Bisa jaga orang", "Bisa kontrol situasi"],
-  ["Overthinking", "Kebawa suasana", "Terlalu perfeksionis", "Menyayangi orang"],
-  ["Jago healing", "Anti-ghosting", "Ceria & lucu", "Punya wisdom"],
-  ["Dapet waktu istirahat", "Punya misi bantu orang", "Bisa menghibur", "Bisa mikir jernih"],
-  ["Drama banget", "Terlalu bodo amat", "Terlalu idealis", "Gak punya arah"],
-  ["Gak peduli", "Overfeel", "Cari makna", "Butuh semangat"],
-  ["Jujur ke kamu", "Bikin kamu ketawa", "Peluk kamu", "Jaga kamu"]
-];
-
-const spiritMap = [
-  ["Mubii", "Onyun", "Banion", "Kroot"],
-  ["Banion", "Mubii", "Bitty", "Jinger"],
-  ["Onyun", "Banion", "Bitty", "Potatoad"],
-  ["Banion", "Jinger", "Onyun", "Kroot"],
-  ["Mubii", "Banion", "Potatoad", "Jinger"],
-  ["Onyun", "Kroot", "Banion", "Mubii"],
-  ["Kroot", "Banion", "Bitty", "Jinger"],
-  ["Jinger", "Bitty", "Potatoad", "Mubii"],
-  ["Kroot", "Banion", "Jinger", "Mubii"],
-  ["Potatoad", "Bitty", "Onyun", "Jinger"],
-  ["Mubii", "Banion", "Jinger", "Onyun"],
-  ["Banion", "Onyun", "Bitty", "Jinger"],
-  ["Potatoad", "Onyun", "Kroot", "Jinger"],
-  ["Onyun", "Banion", "Jinger", "Bitty"],
-  ["Kroot", "Banion", "Jinger", "Bitty"],
-  ["Jinger", "Kroot", "Banion", "Onyun"]
-];
-
-const spiritScores = {
-  Kroot: 0,
-  Banion: 0,
-  Potatoad: 0,
-  Mubii: 0,
-  Onyun: 0,
-  Bitty: 0,
-  Jinger: 0
-};
-
-const spiritProfiles = {
-  Kroot: {
-    name: "Kroot",
-    ability: "Bikin kamu merasa didengerin dan gak sendirian.",
-    personality: "Ngelawak tapi sebenernya peduli.",
-    for: "Yang gak bisa bilang 'aku capek'.",
-    friend: "Banion",
-    enemy: "Ngelucu buat nutup luka"
+const questions = [
+  {
+    text: "1. Kamu terjatuh ke dalam lorong gelap yang berliku. Suasana hening, hanya suara langkahmu yang terdengar. Apa yang kamu lakukan?",
+    options: [
+      { text: "Tetap tenang, menunggu matamu menyesuaikan kegelapan sambil berpikir pelan.", spirits: ["Kroot", "Alliowl"] },
+      { text: "Teriak meminta tolong walau tak yakin ada yang dengar.", spirits: ["Banion", "Mubii"] },
+      { text: "Duduk, menarik napas panjang, merasa terlalu lelah untuk panik.", spirits: ["Potatoad", "Bitty"] },
+      { text: "Cari dinding, susuri pelan-pelan sambil merancang rute keluar.", spirits: ["Onyun", "Gingeer"] },
+      { text: "Melihat sekeliling dan berkata, 'Wah, tempat ini aesthetic juga ya.'", spirits: ["Bitty", "Mubii"] }
+    ]
   },
-  Banion: {
-    name: "Banion",
-    ability: "Bikin kamu lega buat nangis & terhubung dengan perasaan.",
-    personality: "Cengeng lucu, emosian tapi hangat.",
-    for: "Yang kebanyakan ditahan.",
-    friend: "Mubii",
-    enemy: "Bottled feelings"
+  {
+    text: "2. Chame muncul dari bayangan dan bertanya, “Kamu siapa?” Bagaimana kamu menjawab?",
+    options: [
+      { text: "“Aku… nggak tahu lagi.”", spirits: ["Bitty", "Alliowl"] },
+      { text: "“Aku cuma orang biasa, nggak penting juga sih.”", spirits: ["Gingeer", "Kroot"] },
+      { text: "“Kamu siapa dulu? Kenapa nanya aku duluan?”", spirits: ["Banion", "Onyun"] },
+      { text: "“Maaf, aku ganggu ya?”", spirits: ["Mubii", "Potatoad"] },
+      { text: "“Aku... sedang mencari sesuatu.”", spirits: ["Alliowl", "Bitty"] }
+    ]
   },
-  Potatoad: {
-    name: "Potatoad",
-    ability: "Ngajarin kamu buat slow down & rehat.",
-    personality: "Gemesin & tukang rebahan.",
-    for: "Yang kelelahan terus.",
-    friend: "Kroot",
-    enemy: "Burnout"
+  {
+    text: "3. Di lorong itu ada pintu-pintu kecil. Satu di antaranya sedikit terbuka. Apa yang kamu lakukan?",
+    options: [
+      { text: "Menutupnya kembali dengan sopan.", spirits: ["Mubii", "Onyun"] },
+      { text: "Mengintip dan langsung panik sendiri.", spirits: ["Onyun", "Gingeer"] },
+      { text: "Masuk dan duduk karena lelah.", spirits: ["Potatoad", "Kroot"] },
+      { text: "Buka lebar-lebar, nggak peduli apa isinya.", spirits: ["Banion", "Bitty"] },
+      { text: "Tulis catatan di dinding, “Sudah dibuka jam 15:22, tidak ada apa-apa.”", spirits: ["Gingeer", "Alliowl"] }
+    ]
   },
-  Mubii: {
-    name: "Mubii",
-    ability: "Shield anti toxic dan overthinking.",
-    personality: "Kalem, ngilang, tapi selalu jaga kamu dari jauh.",
-    for: "Yang capek dengan dunia luar.",
-    friend: "Bitty",
-    enemy: "Lingkungan negatif"
+  {
+    text: "4. Di lorong, kamu temukan benda yang familiar dari masa kecilmu. Apa yang kamu rasakan?",
+    options: [
+      { text: "Rasa hangat, lalu sedih.", spirits: ["Kroot", "Banion"] },
+      { text: "Bingung kenapa bisa ada di sini, tapi nggak berani pegang.", spirits: ["Onyun", "Gingeer"] },
+      { text: "Terharu tapi merasa tidak layak untuk memilikinya lagi.", spirits: ["Gingeer", "Mubii"] },
+      { text: "Langsung dipeluk dan dibawa jalan lagi.", spirits: ["Banion", "Kroot"] },
+      { text: "“Ah, memori ini…” lalu melamun.", spirits: ["Bitty", "Alliowl"] }
+    ]
   },
-  Onyun: {
-    name: "Onyun",
-    ability: "Berani pasang badan buat emosi orang terdekat.",
-    personality: "Ngegas tapi setia.",
-    for: "Yang rapuh tapi gak bisa bilang.",
-    friend: "Banion",
-    enemy: "Fake comfort"
+  {
+    text: "5. Chame mengajak menyusuri jalur bercabang. Kamu disuruh pilih arah. Bagaimana kamu memilih?",
+    options: [
+      { text: "Tanyakan pendapat Chame, nggak mau ambil keputusan sendiri.", spirits: ["Mubii", "Onyun"] },
+      { text: "Pilih jalur yang paling gelap karena penasaran.", spirits: ["Banion", "Bitty"] },
+      { text: "Duduk dulu, mikir sambil liat suasana.", spirits: ["Potatoad", "Alliowl"] },
+      { text: "Lihat tanda-tanda di sekitar, baru ambil keputusan.", spirits: ["Onyun", "Gingeer"] },
+      { text: "Jalan aja terus tanpa mikir.", spirits: ["Bitty", "Potatoad"] }
+    ]
   },
-  Bitty: {
-    name: "Bitty",
-    ability: "Ngasih harapan pelan-pelan lewat tawa & kebaikan kecil.",
-    personality: "Kecil, lucu, tapi dalem.",
-    for: "Yang ketawa padahal luka.",
-    friend: "Jinger",
-    enemy: "Hopelessness"
+  {
+    text: "6. Kamu dan Chame tiba di lorong penuh cermin. Bayanganmu terlihat berbeda dari biasanya.",
+    options: [
+      { text: "Langsung kabur, nggak sanggup lihat.", spirits: ["Banion", "Mubii"] },
+      { text: "Tatap lama-lama. Mungkin ini aku sebenarnya.", spirits: ["Alliowl", "Bitty"] },
+      { text: "Sentuh cerminnya. Dingin.", spirits: ["Kroot", "Potatoad"] },
+      { text: "Cek satu per satu. Mungkin ada pola di antara semua cermin.", spirits: ["Onyun", "Gingeer"] },
+      { text: "Ngaca lalu bilang, 'Hah, keren juga gue.'", spirits: ["Bitty", "Banion"] }
+    ]
   },
-  Jinger: {
-    name: "Jinger",
-    ability: "Hangat dan bijak, seperti sinar matahari sore.",
-    personality: "Kalem, penyayang, pendiam yang penuh makna.",
-    for: "Yang merasa dingin, kosong, atau hilang arah.",
-    friend: "Bitty",
-    enemy: "Isolation"
+  {
+    text: "7. Di salah satu lorong, ada suara tangisan pelan. Kamu?",
+    options: [
+      { text: "Diam dan dengarkan dulu. Tangisan itu familiar.", spirits: ["Kroot", "Alliowl"] },
+      { text: "Langsung dekati dan tanya, 'Kamu kenapa?'", spirits: ["Mubii", "Banion"] },
+      { text: "Langkahmu makin pelan, takut tapi penasaran.", spirits: ["Onyun", "Bitty"] },
+      { text: "Abaikan aja. Ini bukan urusanmu.", spirits: ["Potatoad", "Gingeer"] },
+      { text: "Tinggalkan catatan: 'Kamu nggak sendirian.'", spirits: ["Gingeer", "Alliowl"] }
+    ]
+  },
+  {
+    text: "8. Kamu menemukan ruang kecil dengan meja dan satu kursi. Di atas meja ada kertas kosong dan pulpen.",
+    options: [
+      { text: "Tulis curhatan yang nggak pernah kamu berani bilang ke siapa pun.", spirits: ["Mubii", "Bitty"] },
+      { text: "Bikin daftar semua hal yang kamu benci.", spirits: ["Banion", "Gingeer"] },
+      { text: "Gambar doodle lucu, terus ketawa sendiri.", spirits: ["Bitty", "Potatoad"] },
+      { text: "Tulis pesan untuk diri sendiri di masa kecil.", spirits: ["Alliowl", "Kroot"] },
+      { text: "Kosongin pikiran. Hanya duduk dan diam.", spirits: ["Kroot", "Onyun"] }
+    ]
+  },
+  {
+    text: "9. Ada sebuah tangga tua menuju bawah tanah. Chame menatapmu, “Kamu yakin mau ke sana?”",
+    options: [
+      { text: "“Enggak. Tapi perlu.”", spirits: ["Kroot", "Gingeer"] },
+      { text: "“Aku cuma pengen tahu rasanya.”", spirits: ["Bitty", "Banion"] },
+      { text: "“Aku bakal nyesel kalau nggak coba.”", spirits: ["Alliowl", "Mubii"] },
+      { text: "“Apa ada jalan lain?”", spirits: ["Onyun", "Potatoad"] },
+      { text: "Diam aja. Tapi langkahmu mantap.", spirits: ["Gingeer", "Alliowl"] }
+    ]
+  },
+  {
+    text: "10. Di ujung tangga, ada cahaya kecil. Tapi langkahmu terasa berat...",
+    options: [
+      { text: "“Aku nggak siap...” tapi tetap lanjut.", spirits: ["Mubii", "Bitty"] },
+      { text: "Istirahat sebentar. Napasmu habis.", spirits: ["Potatoad", "Kroot"] },
+      { text: "Nggak bisa. Harus mundur dulu.", spirits: ["Onyun", "Banion"] },
+      { text: "Coba hubungi Chame, tapi nggak ada jawaban.", spirits: ["Alliowl", "Gingeer"] },
+      { text: "Nangis sedikit, terus jalan lagi.", spirits: ["Banion", "Mubii"] }
+    ]
   }
-};
-
-let currentQ = 0;
-let selected = [];
-
-const quiz = document.getElementById("quiz");
-const resultDiv = document.getElementById("result");
-
-function renderQuestion() {
-  quiz.innerHTML = `
-    <div class="question-box">
-      <h2>${pertanyaan[currentQ]}</h2>
-      <div class="options"></div>
-    </div>
-  `;
-  const optDiv = quiz.querySelector(".options");
-  opsi[currentQ].forEach((opt, i) => {
-    const btn = document.createElement("button");
-    btn.innerText = opt;
-    btn.onclick = () => {
-      selected.push(i);
-      currentQ++;
-      if (currentQ < pertanyaan.length) {
-        renderQuestion();
-      } else {
-        calculateResult();
-      }
-    };
-    optDiv.appendChild(btn);
-  });
-}
-
-function calculateResult() {
-  selected.forEach((choiceIndex, questionIndex) => {
-    const spirit = spiritMap[questionIndex][choiceIndex];
-    spiritScores[spirit]++;
-  });
-
-  const topSpirit = Object.entries(spiritScores)
-    .sort((a, b) => b[1] - a[1])[0][0];
-  showResult(topSpirit);
-}
-
-function showResult(spiritKey) {
-  const spirit = spiritProfiles[spiritKey];
-  quiz.style.display = "none";
-  resultDiv.style.display = "block";
-  resultDiv.innerHTML = `
-    <h2>Kamu butuh: ${spirit.name}</h2>
-    <p><strong>Personality:</strong> ${spirit.personality}</p>
-    <p><strong>Ability:</strong> ${spirit.ability}</p>
-    <p><strong>Cocok untuk:</strong> ${spirit.for}</p>
-    <p><strong>Teman Sejiwa:</strong> ${spirit.friend}</p>
-    <p><strong>Musuh alami:</strong> ${spirit.enemy}</p>
-  `;
-}
-
-renderQuestion();
+   {
+    text: "11. Chame bilang, “Kita hampir sampai.” Kamu tiba-tiba merasa...",
+    answers: [
+      { text: "A. Takut keluar, malah ingin tetap di sini.", spirits: ["Bitty", "Potatoad"] },
+      { text: "B. Gugup tapi penasaran.", spirits: ["Mubii", "Alliowl"] },
+      { text: "C. Ingin balik dan perbaiki banyak hal.", spirits: ["Onyun", "Gingeer"] },
+      { text: "D. Ingin mempercepat langkah.", spirits: ["Banion", "Gingeer"] },
+      { text: "E. Ingin pelan-pelan agar bisa refleksi lebih dalam.", spirits: ["Kroot", "Alliowl"] }
+    ]
+  },
+  {
+    text: "12. Lorong terbuka ke ruang putih kosong. “Kamu bisa isi ruang ini dengan apapun,” kata Chame. Kamu memilih...",
+    answers: [
+      { text: "A. Kursi nyaman dan selimut.", spirits: ["Potatoad", "Mubii"] },
+      { text: "B. Rak buku dan jendela besar.", spirits: ["Gingeer", "Alliowl"] },
+      { text: "C. Lukisan dan warna-warna aneh.", spirits: ["Bitty", "Banion"] },
+      { text: "D. Cermin-cermin dan lampu kecil.", spirits: ["Banion", "Alliowl"] },
+      { text: "E. Tempat buat rebahan dan nonton.", spirits: ["Potatoad", "Bitty"] }
+    ]
+  },
+  {
+    text: "13. Di ujung ruang, ada benda kecil yang bersinar. Kamu mendekat dan ternyata...",
+    answers: [
+      { text: "A. Benda kenangan yang kamu lupakan.", spirits: ["Gingeer", "Mubii"] },
+      { text: "B. Sepotong surat dengan tulisan familiar.", spirits: ["Alliowl", "Kroot"] },
+      { text: "C. Foto seseorang yang pernah sangat berarti.", spirits: ["Bitty", "Banion"] },
+      { text: "D. Kaca kecil dengan ukiran aneh.", spirits: ["Onyun", "Alliowl"] },
+      { text: "E. Kompas usang.", spirits: ["Kroot", "Gingeer"] }
+    ]
+  },
+  {
+    text: "14. Chame bertanya, “Kamu siap pulang?” Kamu menjawab...",
+    answers: [
+      { text: "A. “Belum.”", spirits: ["Bitty", "Mubii"] },
+      { text: "B. “Aku nggak tahu.”", spirits: ["Alliowl", "Potatoad"] },
+      { text: "C. “Kalo aku pulang, aku berubah nggak?”", spirits: ["Banion", "Kroot"] },
+      { text: "D. “Ya. Aku bawa semuanya.”", spirits: ["Gingeer", "Onyun"] },
+      { text: "E. “Tapi kamu ikut juga ya?”", spirits: ["Mubii", "Bitty"] }
+    ]
+  },
+  {
+    text: "15. Saat kamu berjalan keluar, Chame memberi satu pesan untuk dibawa. Pesannya tentang...",
+    answers: [
+      { text: "A. Keberanian melihat isi dirimu.", spirits: ["Alliowl", "Banion"] },
+      { text: "B. Izin untuk istirahat dan diam.", spirits: ["Potatoad", "Kroot"] },
+      { text: "C. Hakmu untuk merasa dan menangis.", spirits: ["Mubii", "Bitty"] },
+      { text: "D. Menurunkan ekspektasi dan belajar pelan.", spirits: ["Gingeer", "Onyun"] },
+      { text: "E. Tentang menerima arah yang berubah.", spirits: ["Bitty", "Kroot"] }
+    ]
+  },
+  {
+    text: "16. Cahaya menyilaukan menyambutmu di luar lorong. Perasaan terakhir sebelum keluar...",
+    answers: [
+      { text: "A. Harapan.", spirits: ["Kroot", "Mubii"] },
+      { text: "B. Ragu tapi ingin mencoba.", spirits: ["Bitty", "Onyun"] },
+      { text: "C. Duka yang indah.", spirits: ["Banion", "Alliowl"] },
+      { text: "D. Lega.", spirits: ["Potatoad", "Gingeer"] },
+      { text: "E. Rindu versi dirimu yang lama.", spirits: ["Alliowl", "Bitty"] }
+    ]
+  }
+];
