@@ -2,12 +2,17 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Veggie Spirit</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Quiz Veggie Spirit</h1>
-  <form id="quizForm"></form>
-  <button id="submitBtn">Lihat Hasil</button>
+  <div class="container">
+    <h1>✨ Quiz Veggie Spirit ✨</h1>
+    <form id="quizForm"></form>
+    <button id="submitBtn">Lihat Hasil</button>
+  </div>
 
   <script src="script.js"></script>
   <script>
@@ -17,6 +22,7 @@
       qDiv.className = 'question-box';
 
       const qText = document.createElement('p');
+      qText.className = 'question-text';
       qText.textContent = q.text;
       qDiv.appendChild(qText);
 
@@ -30,14 +36,17 @@
         radio.value = optIdx;
         label.appendChild(radio);
 
-        label.appendChild(document.createTextNode(opt.text));
+        const span = document.createElement('span');
+        span.textContent = opt.text;
+        label.appendChild(span);
+
         qDiv.appendChild(label);
       });
 
       quizForm.appendChild(qDiv);
     });
 
-    document.getElementById('submitBtn').onclick = function() {
+    document.getElementById('submitBtn').onclick = function () {
       let selectedOptions = [];
       for (let i = 0; i < questions.length; i++) {
         const val = document.querySelector('input[name="question'+i+'"]:checked');
@@ -52,3 +61,4 @@
   </script>
 </body>
 </html>
+
